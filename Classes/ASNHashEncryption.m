@@ -51,6 +51,35 @@ static NSString *digestMD5(const char* cstr)
     return output;
 }
 
+static NSString *digestSHA(NSString *message, int digestLength)
+{
+    const char* cStr = [message UTF8String];
+    uint8_t digest[digestLength];
+    switch (digestLength) {
+        case CC_SHA1_DIGEST_LENGTH:
+            CC_SHA1(cStr, (unsigned int)strlen(cStr), digest);
+            break;
+        case CC_SHA224_DIGEST_LENGTH:
+            CC_SHA224(cStr, (unsigned int)strlen(cStr), digest);
+            break;
+        case CC_SHA256_DIGEST_LENGTH:
+            CC_SHA256(cStr, (unsigned int)strlen(cStr), digest);
+            break;
+        case CC_SHA384_DIGEST_LENGTH:
+            CC_SHA384(cStr, (unsigned int)strlen(cStr), digest);
+            break;
+        case CC_SHA512_DIGEST_LENGTH:
+            CC_SHA512(cStr, (unsigned int)strlen(cStr), digest);
+            break;
+    }
+    NSMutableString *output= [NSMutableString stringWithCapacity:digestLength * 2];
+    for(int i = 0; i < digestLength; i++) {
+        [output appendFormat:@"%02x", digest[i]];
+    }
+    
+    return output;
+}
+
 @implementation ASNHashEncryption
 
 + (NSString *)md2WithString:(NSString *)message
@@ -89,21 +118,29 @@ static NSString *digestMD5(const char* cstr)
     return digestMD5(cStr);
 }
 
-+ (NSString *)sha1:(NSString *)message {
-    const char *cstr = [message cStringUsingEncoding:NSUTF8StringEncoding];
-    NSData *data = [NSData dataWithBytes:cstr length:message.length];
-    
-    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
-    
-    CC_SHA1(data.bytes, (unsigned int)data.length, digest);
-    
-    NSMutableString* output= [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
-    
-    for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++) {
-        [output appendFormat:@"%02x", digest[i]];
-    }
-    
-    return output;
++ (NSString *)sha1:(NSString *)message
+{
+    return digestSHA(message, CC_SHA1_DIGEST_LENGTH);
+}
+
++ (NSString *)sha224:(NSString *)message
+{
+    return digestSHA(message, CC_SHA224_DIGEST_LENGTH);
+}
+
++ (NSString *)sha256:(NSString *)message
+{
+    return digestSHA(message, CC_SHA256_DIGEST_LENGTH);
+}
+
++ (NSString *)sha384:(NSString *)message
+{
+    return digestSHA(message, CC_SHA384_DIGEST_LENGTH);
+}
+
++ (NSString *)sha512:(NSString *)message
+{
+    return digestSHA(message, CC_SHA512_DIGEST_LENGTH);
 }
 
 @end
