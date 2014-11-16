@@ -18,7 +18,7 @@ NSString *deviceTokenBase64 = [deviceToken base64EncodedStringWithOptions:0]; //
 NSData* deviceTokenData = [[NSData alloc] initWithBase64Encoding:deviceTokenBase64];
 ```````
 
-base64とはなんですか?
+##base64とはなんですか?
 64種類の英数字のみでマルチバイト文字やバイナリファイルなどを表現する.
 A-Z, a-z, 0-9, +/=で表現される.
 
