@@ -9,7 +9,85 @@
 #import "ASNHashEncryption.h"
 #import <CommonCrypto/CommonDigest.h>
 
+static NSString *digestMD2(const char* cstr)
+{
+    unsigned char digest[CC_MD2_DIGEST_LENGTH];
+    CC_MD2(cstr, (unsigned int)strlen(cstr), digest);
+    
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD2_DIGEST_LENGTH* 2];
+    
+    for(int i = 0; i < CC_MD2_DIGEST_LENGTH; i++) {
+        [output appendFormat:@"%02x", digest[i]];
+    }
+    
+    return output;
+}
+
+static NSString *digestMD4(const char* cstr)
+{
+    unsigned char digest[CC_MD4_DIGEST_LENGTH];
+    CC_MD4(cstr, (unsigned int)strlen(cstr), digest);
+    
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD4_DIGEST_LENGTH* 2];
+    
+    for(int i = 0; i < CC_MD4_DIGEST_LENGTH; i++) {
+        [output appendFormat:@"%02x", digest[i]];
+    }
+    
+    return output;
+}
+
+static NSString *digestMD5(const char* cstr)
+{
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(cstr, (unsigned int)strlen(cstr), digest);
+    
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+        [output appendFormat:@"%02x", digest[i]];
+    }
+    
+    return output;
+}
+
 @implementation ASNHashEncryption
+
++ (NSString *)md2WithString:(NSString *)message
+{
+    const char *cStr = [message UTF8String];
+    return digestMD2(cStr);
+}
+
++ (NSString *)md2WithData:(NSData *)message
+{
+    const char *cStr = [message bytes];
+    return digestMD2(cStr);
+}
+
++ (NSString *)md4WithString:(NSString *)message
+{
+    const char *cStr = [message UTF8String];
+    return digestMD4(cStr);
+}
+
++ (NSString *)md4WithData:(NSData *)message
+{
+    const char *cStr = [message bytes];
+    return digestMD4(cStr);
+}
+
++ (NSString *)md5WithString:(NSString *)message
+{
+    const char *cStr = [message UTF8String];
+    return digestMD5(cStr);
+}
+
++ (NSString *)md5WithData:(NSData *)message
+{
+    const char *cStr = [message bytes];
+    return digestMD5(cStr);
+}
 
 + (NSString *)sha1:(NSString *)message {
     const char *cstr = [message cStringUsingEncoding:NSUTF8StringEncoding];
@@ -17,25 +95,11 @@
     
     uint8_t digest[CC_SHA1_DIGEST_LENGTH];
     
-    CC_SHA1(data.bytes, data.length, digest);
+    CC_SHA1(data.bytes, (unsigned int)data.length, digest);
     
     NSMutableString* output= [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
     
     for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++) {
-        [output appendFormat:@"%02x", digest[i]];
-    }
-    
-    return output;
-}
-
-+ (NSString *)md5:(NSString *)message {
-    const char *cStr = [message UTF8String];
-    unsigned char digest[16];
-    CC_MD5(cStr, strlen(cStr), digest); // This is the md5 call
-    
-    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
-    
-    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
         [output appendFormat:@"%02x", digest[i]];
     }
     

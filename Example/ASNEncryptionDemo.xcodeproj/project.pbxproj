@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		493126551A18E2A500F3E109 /* ASNAESEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 493126541A18E2A500F3E109 /* ASNAESEncryption.m */; };
 		497A46AA1A1899FF00D7EA91 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 497A46A91A1899FF00D7EA91 /* main.m */; };
 		497A46B61A189D7A00D7EA91 /* ASNRSAEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 497A46B51A189D7A00D7EA91 /* ASNRSAEncryption.m */; };
 		497A46B91A18A65100D7EA91 /* ASNHashEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 497A46B81A18A65100D7EA91 /* ASNHashEncryption.m */; };
@@ -25,6 +26,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		493126531A18E2A500F3E109 /* ASNAESEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASNAESEncryption.h; sourceTree = "<group>"; };
+		493126541A18E2A500F3E109 /* ASNAESEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASNAESEncryption.m; sourceTree = "<group>"; };
 		497A46A61A1899FF00D7EA91 /* ASNEncryptionDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ASNEncryptionDemo; sourceTree = BUILT_PRODUCTS_DIR; };
 		497A46A91A1899FF00D7EA91 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		497A46B11A189A2F00D7EA91 /* ASNEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASNEncryption.h; sourceTree = "<group>"; };
@@ -78,6 +81,8 @@
 				497A46B81A18A65100D7EA91 /* ASNHashEncryption.m */,
 				497A46B41A189D7A00D7EA91 /* ASNRSAEncryption.h */,
 				497A46B51A189D7A00D7EA91 /* ASNRSAEncryption.m */,
+				493126531A18E2A500F3E109 /* ASNAESEncryption.h */,
+				493126541A18E2A500F3E109 /* ASNAESEncryption.m */,
 			);
 			name = ASNEncryption;
 			path = ../../Classes;
@@ -142,6 +147,7 @@
 				497A46AA1A1899FF00D7EA91 /* main.m in Sources */,
 				497A46B61A189D7A00D7EA91 /* ASNRSAEncryption.m in Sources */,
 				497A46B91A18A65100D7EA91 /* ASNHashEncryption.m in Sources */,
+				493126551A18E2A500F3E109 /* ASNAESEncryption.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

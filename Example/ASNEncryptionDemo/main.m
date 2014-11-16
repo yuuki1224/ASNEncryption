@@ -11,7 +11,7 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        NSString *encyptedString = [ASNHashEncryption sha1:@"asanoyuki"];
     }
+    
     return 0;
 }
