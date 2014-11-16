@@ -123,24 +123,59 @@ static NSString *digestSHA(NSString *message, int digestLength)
     return digestSHA(message, CC_SHA1_DIGEST_LENGTH);
 }
 
-+ (NSString *)sha224:(NSString *)message
++ (NSString *)sha1WithString:(NSString *)message
+{
+    return digestSHA(message, CC_SHA1_DIGEST_LENGTH);
+}
+
++ (NSString *)sha1WithData:(NSData *)message
+{
+    NSString *messageString = [[NSString alloc] initWithData:message encoding:NSUTF8StringEncoding];
+    return digestSHA(messageString, CC_SHA1_DIGEST_LENGTH);
+}
+
++ (NSString *)sha224WithString:(NSString *)message
 {
     return digestSHA(message, CC_SHA224_DIGEST_LENGTH);
 }
 
-+ (NSString *)sha256:(NSString *)message
++ (NSString *)sha224WithData:(NSData *)message
+{
+    NSString *messageString = [[NSString alloc] initWithData:message encoding:NSUTF8StringEncoding];
+    return digestSHA(messageString, CC_SHA224_DIGEST_LENGTH);
+}
+
++ (NSString *)sha256WithString:(NSString *)message
 {
     return digestSHA(message, CC_SHA256_DIGEST_LENGTH);
 }
 
-+ (NSString *)sha384:(NSString *)message
++ (NSString *)sha256WithData:(NSData *)message
+{
+    NSString *messageString = [[NSString alloc] initWithData:message encoding:NSUTF8StringEncoding];
+    return digestSHA(messageString, CC_SHA256_DIGEST_LENGTH);
+}
+
++ (NSString *)sha384WithString:(NSString *)message
 {
     return digestSHA(message, CC_SHA384_DIGEST_LENGTH);
 }
 
-+ (NSString *)sha512:(NSString *)message
++ (NSString *)sha384WithData:(NSData *)message
+{
+    NSString *messageString = [[NSString alloc] initWithData:message encoding:NSUTF8StringEncoding];
+    return digestSHA(messageString, CC_SHA384_DIGEST_LENGTH);
+}
+
++ (NSString *)sha512WithString:(NSString *)message
 {
     return digestSHA(message, CC_SHA512_DIGEST_LENGTH);
+}
+
++ (NSString *)sha512WithData:(NSData *)message
+{
+    NSString *messageString = [[NSString alloc] initWithData:message encoding:NSUTF8StringEncoding];
+    return digestSHA(messageString, CC_SHA512_DIGEST_LENGTH);
 }
 
 @end

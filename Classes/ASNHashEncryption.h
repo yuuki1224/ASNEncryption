@@ -19,18 +19,19 @@
 + (NSString *)md5WithString:(NSString *)message;
 + (NSString *)md5WithData:(NSData *)message;
 
-+ (NSString *)sha1:(NSString *)message;
++ (NSString *)sha1WithString:(NSString *)message;
++ (NSString *)sha1WithData:(NSData *)message;
 
-// TODO:SHA224
-+ (NSString *)sha224:(NSString *)message;
++ (NSString *)sha224WithString:(NSString *)message;
++ (NSString *)sha224WithData:(NSData *)message;
 
-// TODO:SHA256
-+ (NSString *)sha256:(NSString *)message;
++ (NSString *)sha256WithString:(NSString *)message;
++ (NSString *)sha256WithData:(NSData *)message;
 
-// TODO:SHA384
-+ (NSString *)sha384:(NSString *)message;
++ (NSString *)sha384WithString:(NSString *)message;
++ (NSString *)sha384WithData:(NSData *)message;
 
-// TODO:SHA512
-+ (NSString *)sha512:(NSString *)message;
++ (NSString *)sha512WithString:(NSString *)message;
++ (NSString *)sha512WithData:(NSData *)message;
 
 @end
