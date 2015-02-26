@@ -29,5 +29,5 @@ NSData* deviceTokenData = [[NSData alloc] initWithBase64Encoding:deviceTokenBase
 ##base64とはなんですか?
 64種類の英数字のみでマルチバイト文字やバイナリファイルなどを表現する.
 A-Z, a-z, 0-9, +/=で表現される.
-
+base64は、暗号化ではない.
 主に電子メールで使用され、画像/音声は、バイナリファイルでそのままでは、送受信できない。テキストファイルに変換する必要がある.
